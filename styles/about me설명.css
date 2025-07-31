@@ -1,0 +1,740 @@
+@charset "utf-8";
+
+/* ===========================================
+   CSS 리셋 (Reset Styles)
+   - 브라우저 기본 스타일 초기화
+   - 모든 요소의 margin, padding을 0으로 설정
+   - box-sizing을 border-box로 통일
+   =========================================== */
+html, body, div, header, span, h1,h2,h3,ul,li, nav,p,span, img, footer, section, article,hr,strong,sub, sup, strong, a{
+    margin:0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+/* 유틸리티 클래스들 */
+.hidden{display: none;} /* 요소 숨기기 */
+ul,li{list-style: none;} /* 리스트 기본 스타일 제거 */
+a{text-decoration: none; color:inherit;} /* 링크 기본 스타일 제거 */
+hr{border: none;} /* 수평선 기본 스타일 제거 */
+img{max-width: 100%; vertical-align: top; border: 0;} /* 반응형 이미지 설정 */
+.wrap{width:100%} /* 전체 너비 래퍼 */
+
+/* ===========================================
+   기본 body 스타일
+   - 한국어 웹폰트 스택 적용 (Pretendard 우선)
+   - 전체 색상 및 배경색 설정
+   =========================================== */
+body{
+    color:#1b1b1b; 
+    background-color: #ffffff; 
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* 특정 제목들에 영문 폰트(Montserrat) 적용 */
+.main_title, .title>span{ 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+/* 레이아웃 컨테이너 */
+.wrap{width:100%}
+.inner{width:83.33%; margin: 0 auto;} /* 컨텐츠 영역: 전체의 5/6 너비로 중앙 정렬 */
+
+/* ===========================================
+   헤더 (Header) 스타일
+   - 고정 위치 (fixed)
+   - 반투명 배경 + 블러 효과 (glassmorphism)
+   - 그림자 효과로 depth 표현
+   =========================================== */
+header{
+    position: fixed;
+    background-color:rgba(255, 255, 255, 0.4); /* 40% 투명도 흰색 배경 */
+    height: 80px; 
+    width:100%; 
+    -webkit-backdrop-filter: blur(8px); /* Safari 지원 */
+    backdrop-filter: blur(8px); /* 배경 블러 효과 */
+    top:0; 
+    box-shadow: 0px 0px 10px rgb(134, 134, 134,0.5); /* 그림자 */
+    z-index: 999; /* 다른 요소들 위에 표시 */
+}
+
+/* 네비게이션 메뉴 스타일 */
+header nav{height:80px; color:#333;}
+header nav > ul{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    align-content: center; 
+    font-size: 1.125rem; /* 18px */
+    gap:50px; 
+    height: 100%; 
+}
+header nav > ul > li{
+    padding:0 38px; 
+    font-weight: 600; 
+    position: relative;
+}
+header nav ul li a{display: block; height: 100%;}
+header nav ul li:hover a{color:#FF8335} /* 호버 시 오렌지색 */
+header nav ul li:last-child{margin-right: 0;}
+
+/* ===========================================
+   모바일 햄버거 메뉴
+   - 3개의 span으로 구성된 햄버거 아이콘
+   - 클릭 시 X자 모양으로 변환 애니메이션
+   =========================================== */
+.mbmenu{
+    width: 38px; 
+    height: 30px; 
+    position: relative; 
+    cursor: pointer; 
+    display: none; /* 기본적으로 숨김 (모바일에서만 표시) */
+    top:30px; 
+    left:20px
+}
+.mbmenu >span{ 
+    border-radius: 5px; 
+    background-color: #1b1b1b; 
+    position: absolute; 
+    transition: 0.3s; 
+    width: 100%; 
+    height: 2px; 
+    left:0 ;
+}
+.mbmenu >span:nth-child(1){top:0} /* 첫 번째 선 */
+.mbmenu >span:nth-child(2){top:10px} /* 두 번째 선 */
+.mbmenu >span:nth-child(3){top:20px} /* 세 번째 선 */
+
+/* 활성화 시 X자 모양으로 변환 */
+.mbmenu.active span:nth-child(1){transform: rotate(45deg); top:9px}
+.mbmenu.active span:nth-child(2){opacity: 0;} /* 가운데 선 숨김 */
+.mbmenu.active span:nth-child(3){transform: rotate(-45deg); top:9px}
+
+/* 섹션 제목 스타일 */
+.title > span{
+    font-size: 32px; 
+    font-weight: 700; 
+    line-height: 100px; 
+    display: block; 
+    color:#1b1b1b; 
+    padding-top: 40px;
+}
+
+/* ===========================================
+   About Me 섹션
+   - 프로필 이미지와 정보를 좌우로 배치
+   - 텍스트 아이콘 장식 요소 포함
+   =========================================== */
+.aboutme{
+    width:100%;  
+    border-radius: 100px; 
+    color: #1d1d1d; 
+    border-bottom-right-radius: 0; 
+    border-bottom-left-radius:0; 
+    overflow: hidden; 
+    padding-top:150px; /* 고정 헤더 공간 확보 */
+    padding-bottom: 100px; 
+}
+.container{width:83.33%; height:100%; margin: 0 auto; position: relative; }
+.title > span{color:#333;}
+.title > p{ padding-top: -10px; }
+
+/* 프로필 컨테이너: 이미지와 정보를 flexbox로 배치 */
+.profile_container{
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 40px 0px;
+}
+
+/* 프로필 이미지 스타일 */
+.profile_img{
+    width:440px; 
+    height: 460px; 
+    box-shadow: 0px 2px 4px #999999; 
+    border-radius: 20px; 
+}
+.profile_img > img{
+    border-radius: 20px; 
+    object-fit: cover; /* 이미지 비율 유지하며 크롭 */
+    width: 100%; 
+    height: 100%;
+}
+
+/* 프로필 정보 영역 */
+.profile{
+    width:100%;  
+    margin-left: 80px; 
+    position: relative; 
+}
+.profile > ul{
+    display: flex; 
+    flex-wrap: wrap;  
+    align-content: space-around; 
+    gap:20px 35px
+}
+.profile > ul>li{padding: 10px;}
+.profile > ul>li>span{
+    font-size: 1.5rem;  
+    font-weight: 600; 
+    color:#ff9553 /* 강조 색상 */
+}
+
+/* 프로필 세부 정보 리스트 */
+.profile ul li .sub{
+    margin-top: 10px; 
+    font-size: 1rem; 
+    font-weight: 300; 
+    width:290px
+}
+.profile ul li .sub li{line-height: 35px; font-weight: 400;} 
+.profile ul li:first-child .sub li{line-height: 35px; width: 100%;} 
+.profile ul li .sub li span{
+    font-size: 0.875rem; 
+    font-weight: 200; 
+    color: #6d6d6d; 
+    margin-left: 10px;
+} 
+
+/* 장식용 텍스트 아이콘 */
+.text_icon {
+    position: absolute; 
+    right:120px; 
+    top:300px; 
+    width: 230px; 
+    transform: rotate(5deg); /* 살짝 기울여서 동적인 느낌 */
+}
+
+/* 버튼 스타일 (현재 숨김 처리) */
+.button > a{
+    color:#1d1d1d; 
+    text-align: center; 
+    font-size: 18px; 
+    display: block; 
+    line-height: 40px; 
+    width:110px; 
+    height: 40px; 
+    border: 1px solid #FF8335; 
+    border-radius: 18px; 
+    position: absolute; 
+    right:0; 
+    bottom: 120px; 
+    display: none; 
+}
+.button> a:hover {background-color: #FF8335; color:#fff }
+
+/* ===========================================
+   Learning 프로세스 섹션
+   - 스와이퍼(Swiper) 슬라이더 사용
+   - 텍스트와 이미지를 좌우로 배치
+   =========================================== */
+.Learning{width: 100%; padding: 50px 0; overflow: hidden;}
+
+/* 프로세스 텍스트 영역 */
+.process_txt_area{width: 35%;  position: relative; padding: 0 10px; }
+.process_img_area{width: 100%; padding: 30px 0 ; }
+
+/* 스와이퍼 컨테이너 설정 */
+.swiper-container {width: 100%; margin-top: 30px;}
+.swiper1 .swiper-wrapper {
+  display: flex;
+  gap: 0px;
+}
+.swiper1 .swiper-slide {
+    display: flex;
+    justify-content: space-around
+}
+
+/* 페이지네이션 위치 조정 */
+.swiper-pagination{position: relative; bottom: -60px; cursor: pointer;}
+
+/* 프로세스 설명 텍스트 */
+.process_txt{
+    position: absolute; 
+    top:50%; 
+    left:50%; 
+    transform: translate(-50%,-50%); /* 정중앙 배치 */
+    width: 100%; 
+    padding: 0 20px;
+}
+.process_txt >strong{font-size:1.5rem ;}
+.process_txt >p{padding-top: 20px; line-height: 28px;}
+
+/* 프로세스 이미지 배치 */
+.process_img{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap:30px; 
+    height: 100%; 
+}
+.process_img li{
+    width: 450px; 
+    height: 280px; 
+    box-shadow: 0px 0px 4px #a1a1a1; 
+    border-radius: 10px; 
+    overflow: hidden;
+}
+.process_img li >img{width: 100%; object-fit: cover; height: 100%;} 
+
+/* ===========================================
+   Life 섹션 (갤러리)
+   - 이미지들을 2줄로 배치
+   - 호버 시 확대 효과와 오버레이
+   - 스크롤 애니메이션 적용
+   =========================================== */
+.life{width: 100%;  padding-top: 50px; overflow: hidden; }
+.title > span{
+    font-size: 32px; 
+    font-weight: 700; 
+    line-height: 70px; 
+    display: block; 
+    color:#333; 
+    padding-top: 40px;
+}
+
+/* 스크롤 애니메이션을 위한 초기 상태 */
+.life_area li{ 
+    opacity: 0; 
+    transition: opacity 0.5s ease, transform 0.5s ease;  
+    transform: translateY(100px); /* 아래에서 올라오는 효과 */
+} 
+
+/* 활성화 시 나타나는 상태 */
+.life_area li.on{opacity: 1;  transform: translateY(0px);}
+
+/* 첫 번째 행 이미지들 */
+.life_area .life_img1{
+    display: flex; 
+    padding: 50px 0; 
+    width: 100%; 
+    justify-content: flex-start; 
+    gap:40px
+}
+.life_img1 li{
+    width: 25%; 
+    height: 250px;  
+    overflow: hidden; 
+    border-radius: 20px; 
+}
+.life_img1 li a{display: block; height: 100%;}
+.life_img1 li .life_imgarea img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 20px; 
+    transition: all 0.5s ease-in-out;
+}
+.life_img1 li:nth-child(2n){ width: 20%; height: 250px;} /* 짝수 번째 이미지는 작게 */
+
+/* 이미지 호버 효과를 위한 공통 스타일 */
+.life_img1 li .life_imgarea, .life_img2 li .life_imgarea {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+    border-radius: 20px;
+}
+
+/* 호버 시 이미지 확대 효과 */
+.life_img1 li:hover .life_imgarea img, .life_img2 li:hover .life_imgarea img {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+/* 특정 이미지의 위치 조정 */
+.life_area .life_img1 li:nth-child(2) .life_imgarea > img{object-position: 0 -150px;}
+
+/* 두 번째 행 이미지들 (오른쪽 정렬) */
+.life_area .life_img2{
+    display: flex; 
+    padding-top: 50px; 
+    width: 100%; 
+    justify-content: flex-end;  
+    gap:50px; 
+}
+.life_img2 li{
+    width: 25%; 
+    height: 250px; 
+    overflow: hidden;
+    border-radius: 20px; 
+}
+.life_img2 li img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 20px; 
+    transition: all 0.5s ;
+}
+.life_img2 li:nth-child(2n){ width: 15%; height: 250px;}
+
+/* 이미지 오버레이 효과 */
+.over{
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.582);  
+    position: relative; 
+    border-radius: 20px; 
+    top:0; 
+    left:0; 
+    transform: translateY(0);  
+    transition: all 0.7s; 
+    z-index: 999;
+}
+
+/* 오버레이 내용 */
+.overcon{
+    position: absolute; 
+    top:50%; 
+    left:50%; 
+    transform: translate(-50%,-50%); 
+    text-align: center; 
+    color:#fff; 
+    width: 100%; 
+}
+.overcon strong{font-weight: 600; font-size: 1.25rem;}
+.overcon span{display: block; padding-top: 10px;}
+
+/* 호버 시 오버레이가 위로 슬라이드되어 사라짐 */
+.life_img1 li:hover .over, .life_img2 li:hover .over{
+    transform: translateY(-100%); 
+    transition: all 0.7s;
+}
+
+/* ===========================================
+   Strength 섹션 (강점 슬라이더)
+   - 카드 형태의 스와이퍼 슬라이더
+   - 호버 시 아이콘에서 텍스트로 전환
+   =========================================== */
+.strength{width:100%; padding: 50px 0 ; }
+.strength>.title{width:83.33%; margin: 0 auto;}
+
+/* 스와이퍼 슬라이드 기본 스타일 */
+.swiper-slide a{display: block; height: 100%;}
+.swiper-slide:hover{border: none;}
+
+/* 호버 시 아이콘 페이드아웃 */
+.swiper-slide:hover .icon_area{ 
+    opacity: 0; 
+    transition: opacity 0.1s ease-in-out;
+}
+
+/* 두 번째 스와이퍼 설정 */
+.swiper2 {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.swiper2 .swiper-wrapper {
+    display: flex;
+    height: 500px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.swiper2 .swiper-slide {
+    width: 350px;
+    border-radius: 20px; 
+    position: relative;
+    height:390px; 
+    box-shadow: 0px 0px 4px #a1a1a1; 
+}
+.swiper-slide > a{display: block; height: 100%;}
+
+/* 커스텀 네비게이션 버튼 (이미지 배경 사용) */
+.swiper-button-prev{
+    background:url(../images/ico_prev_blue_h48.png) no-repeat; 
+    display: block; 
+    width: 48px; 
+    height: 48px; 
+}
+.swiper-button-next{
+    background:url(../images/ico_next_blue_h48.png) no-repeat; 
+    display: block; 
+    width: 48px; 
+    height: 48px;
+}
+
+/* 기본 화살표 아이콘 숨김 */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+/* 아이콘 영역 */
+.icon_area{padding-top: 100px;}
+.icon_area{display: block; height: 100%; text-align: center;}
+.icon_area img{width:130px; margin-left: 30px; }
+.icon_area span{
+    display: block; 
+    text-align: center; 
+    font-size: 28px; 
+    font-weight: 600; 
+    padding-top: 30px; 
+    color: #1b1b1b 
+}
+
+/* 호버 시 나타나는 추가 컨텐츠 */
+.extra_content{
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width:100%; 
+    height:390px; 
+    border-radius: 20px;  
+    color: #1b1b1b; 
+    text-align: center; 
+    display: none;
+}
+.extra_content .extra_text{
+    width:320px; 
+    position: absolute; 
+    top:50%; 
+    left:50%; 
+    transform: translate(-50%,-50%); 
+}
+.extra_content .extra_text strong{font-size: 30px;}
+.extra_content .extra_text span{
+    font-size:20px;  
+    display: block; 
+    margin-top: 10px; 
+}
+
+/* 호버 시 추가 컨텐츠 표시 */
+.swiper-slide:hover .extra_content{display: block; opacity: 1;  }
+
+/* ===========================================
+   Footer 스타일
+   - 어두운 배경의 연락처 정보
+   - 소셜 미디어 링크들
+   =========================================== */
+footer {
+    background: #222; 
+    color: white; 
+    padding: 3rem 0 1rem; 
+    margin-top: 4rem;
+}
+footer .ftinner{ margin: 0 auto; width: 83.33%;}
+footer .ftinner strong{
+    font-size: 32px; 
+    padding-top: 50px; 
+    display: block; 
+    font-family: "Montserrat", sans-serif;
+}
+footer .ftinner hr{
+    padding: 5px; 
+    border-bottom: 1px solid rgba(94, 94, 94, 0.4);
+} 
+footer .ftinner > p{
+    font-size: 1.5rem; 
+    padding-top: 20px; 
+    color: #575757;
+}
+footer .ftinner .contact_list{padding-top: 26px; }
+footer .ftinner .contact_list ul{display: flex; gap:30px}
+footer .ftinner .contact_list ul li a{ padding: 10px; font-size: 24px;}
+footer .ftinner .contact_list ul li a span{
+    display: block; 
+    font-size: 28px;  
+    padding-top: 8px; 
+    font-weight: 500;
+}
+
+/* ===========================================
+   Top 버튼 (맨 위로 이동)
+   - 고정 위치로 우하단에 배치
+   =========================================== */
+.top_btn > a{
+    width: 50px; 
+    height: 50px; 
+    right: 50px;
+    bottom: 70px; 
+    z-index: 999; 
+    border-radius: 100%;
+    position: fixed; 
+    opacity: 0.8; 
+    box-shadow: 0px 0px 4px #6d6d6d; 
+    display: none;
+}
+
+/* ===========================================
+   모바일 서브 네비게이션
+   - 전체 화면을 덮는 메뉴
+   - 좌측에서 슬라이드인 애니메이션
+   =========================================== */
+.open_nav{
+    background-color: #fff; 
+    position: fixed; 
+    top:0; 
+    left:-100%; /* 초기 위치: 화면 밖 */
+    width: 100%; 
+    height: 100%; 
+    z-index: 9; 
+    transition: left 0.5s ease-in-out; 
+    visibility: hidden;  
+}
+.open_nav.active{left:0%} /* 활성화 시 화면에 나타남 */
+
+/* 서브 네비게이션 메뉴 */
+.subnav_menu{
+    font-size: 2rem; 
+    font-weight: 700; 
+    display: flex; 
+    flex-flow:column; 
+    flex-grow: 1; 
+    top:30%; 
+    left:50%; 
+    transform: translate(-50%,-50%); 
+    position: absolute; 
+    text-align: center; 
+    padding-top: 120px;
+}
+.subnav_menu li{line-height: 80px;}
+.subnav_menu li:hover{color: #FF8335;}
+
+/* ===========================================
+   반응형 미디어 쿼리
+   =========================================== */
+
+/* 데스크톱 ~ 태블릿 (1280px 이하) */
+@media screen and (max-width:1280px) {
+  /* 장식 아이콘 숨김 */
+  .text_icon {display: none; }
+  
+  /* 프로필 섹션을 세로 배치로 변경 */
+  .profile_container{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+  }
+  .profile{margin-top: 50px; margin-left: 0;}
+  .profile >ul{justify-content: center;}
+  .profile >ul>li{width: 30%;}
+  .profile ul li .sub{margin-top: 16px; font-size: 1rem; font-weight: 300; width:290px}
+  
+  /* 갤러리 이미지 크기 조정 */
+  .life_area .life_img1{gap:20px}
+  .life_img1 li, .life_img2 li{width: 50%; height: 250px;}
+  .life_img1 li:nth-child(2n), .life_img2 li:nth-child(2n){ width: 50%; height: 250px;}
+  .overcon strong{font-weight: 600; font-size: 1rem;}
+  .overcon span{display: block; padding-top: 10px; font-size: 0.875rem;}
+  
+  /* 스와이퍼 슬라이드 크기 조정 */
+  .swiper2 .swiper-slide {width: 28% }
+  .life_area .life_img1 li:nth-child(2) .life_imgarea > img{object-position: 0;}
+}
+
+/* 모바일 (768px 이하) */
+@media screen and (max-width:768px) {
+  .title>p{font-size: 0.875em;}
+
+  /* 메뉴 변경: 데스크톱 메뉴 숨기고 햄버거 메뉴 표시 */
+  .inner{width: 90%;}
+  header{display: none;}
+  nav{display: none;}
+  .mbmenu{display: block; z-index: 9999; }
+
+  /* Learning 섹션을 세로 배치로 변경 */
+  .Learning{padding-top: 0; overflow: hidden;}
+  .swiper1 .swiper-slide {
+      flex-direction: column; 
+    }
+    .process_txt_area{ padding-top: 150px;}
+  .process_txt_area, .process_img_area{width: 100%; }
+  .process_txt{position: none; font-size: 0.875rem;}
+  .process_txt>strong{font-size: 1.125rem;}
+  .process_txt>p{padding-top: 10px;}
+  .swiper1 .swiper-pagination{ bottom: -25px; }
+  .process_img li{width: 200px; height: 240px; box-shadow: 0px 0px 4px #a1a1a1; border-radius: 10px;}
+
+  /* About me 섹션 모바일 최적화 */
+  .aboutme{border-radius: 10px; padding: 30px 0;}
+  .text_icon {display: none;}
+  .profile_container{flex-direction: column;  padding-bottom: 20px; }
+  .profile > ul{
+    flex-direction: column; 
+    flex-wrap: wrap;  
+    gap:0px; 
+    padding-top: 0px; 
+    font-size: 1.2em; 
+    justify-content: space-between;
+  }
+  .profile{margin-left: 0;}
+  .profile > ul li{width: 100%;}
+  .profile ul li .sub li{line-height:25px; }
+  .profile ul li .sub{margin-top: 10px; width: 95%; height: 100px;}
+  .sub>li{font-size: 1rem; }
+  .profile_img{width: 400px;}
+  .profile ul li .sub li sup{font-size: 0.75rem;}
+  .profile ul li:first-child .sub li{line-height: 25px; width: 90%;} 
+
+  /* Life 갤러리 모바일 최적화 */
+  .life{padding: 50px 0;}
+  .life_img1{flex-direction: column;}
+  .life_area .life_img1,  .life_area .life_img2{
+    padding-top: 30px; 
+    width: 100%; 
+    justify-content: flex-start; 
+    height: auto; 
+    gap:20px; 
+    flex-flow: row; 
+    flex-wrap: wrap;
+  }
+  .life_img1 li, .life_img2 li{width: 45%; height: 250px;}
+  .life_img1 li .life_imgarea, .life_img1 li .life_imgarea img, .life_img2 li .life_imgarea, .life_img2 li .life_imgarea img {border-radius: 10px;}
+  .life_img1 li:nth-child(2n), .life_img2 li:nth-child(2n){ width: 45%; height: 250px;}
+  .life_img2 li:nth-child(3) img{object-position: 0 }
+  .overcon strong{font-weight: 600; font-size: 1rem;}
+  .overcon span{ font-size: 0.75rem;}
+  .over{border-radius: 10px;}
+
+  .life_area .life_img1 li:nth-child(2) .life_imgarea > img{object-position: 0;}
+
+  /* Strength 섹션 모바일 최적화 */
+  .strength{padding: 50px 0; width: 100%;}
+  .swiper2 .swiper-wrapper {
+    height: 400px; /* 모바일에서 높이 축소 */
+  }
+  .swiper2 .swiper-slide {
+      width: 50%; /* 모바일에서 슬라이드 폭 증가 */
+      height: 300px; /* 높이 축소 */
+      border-radius: 20px; 
+      position: relative;
+      box-shadow: 0px 0px 4px #a1a1a1;  
+  }
+  .icon_area{padding-top: 70px;}
+  .icon_area img{width:100px; margin-left: 0px; }
+  .icon_area span{
+    font-size: 1.4rem; 
+    font-weight: 600; 
+    padding-top: 30px;
+  }
+  .extra_content{
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width:100%; 
+      height:100%;  
+      display: none;
+  }
+  .extra_content .extra_text strong{font-size: 1rem;}
+  .extra_content .extra_text span{
+    font-size:0.875rem;  
+    display: block; 
+    margin-top: 10px;
+  }
+
+  /* Footer 모바일 최적화 */
+  footer .ftinner .contact_list ul {flex-direction: column;} /* 연락처를 세로로 배치 */
+  footer .ftinner .contact_list ul li{line-height: 30px;}
+
+  /* 모바일 네비게이션 가시성 설정 */
+  .open_nav{
+    width: 100%;
+    visibility: visible; /* 모바일에서는 항상 접근 가능 */
+  }
+}

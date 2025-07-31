@@ -1,0 +1,953 @@
+@charset "utf-8";
+
+/* ===========================================
+   배경 이미지 스타일 (메인 페이지용)
+   =========================================== */
+.background-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 중앙 정렬 */
+    z-index: 0; /* 뒤쪽에 배치 */
+    opacity: 0.5; /* 배경처럼 보이게 투명도 조절 */
+    width: 750px;
+    height: auto;
+}
+
+/* 메인 텍스트 스타일 */
+.text {
+    position: relative;
+    z-index: 1; /* 배경 이미지보다 앞에 배치 */
+    font-size: 48px;
+    font-weight: bold;
+    color: #222;
+}
+
+/* 로고 이미지 크기 설정 */
+.logo img { 
+    height: 100px; 
+    width: 100px; 
+}
+
+/* ===========================================
+   CSS 리셋 (기본 스타일 초기화)
+   =========================================== */
+html, body, div, header, span, h1, h2, h3, ul, li, nav, p, img, footer, section, article, hr {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; /* 박스 모델 통일 */
+}
+
+.hidden { display: none; } /* 숨김 요소 */
+ul, li { list-style: none; } /* 리스트 스타일 제거 */
+a { text-decoration: none; color: inherit; } /* 링크 스타일 초기화 */
+hr { border: none; } /* HR 태그 스타일 초기화 */
+img { max-width: 100%; vertical-align: top; border: 0; } /* 이미지 반응형 설정 */
+.wrap { width: 100% } /* 전체 컨테이너 */
+
+/* ===========================================
+   기본 바디 스타일
+   =========================================== */
+body {
+    color: #1b1b1b; 
+    background-color: #ffffff; 
+    /* 한국어 웹 폰트 스택 설정 */
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* 제목용 영문 폰트 */
+.main_title, .title > span { 
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+}
+
+/* 내부 컨테이너 (83.33% = 5/6 너비) */
+.inner { width: 83.33%; margin: 0 auto; }
+
+/* ===========================================
+   헤더 (네비게이션) 스타일
+   =========================================== */
+header {
+    position: fixed; /* 상단 고정 */
+    background-color: rgba(255, 255, 255, 0.4); /* 반투명 배경 */
+    height: 80px; 
+    width: 100%; 
+    /* 블러 효과 적용 */
+    -webkit-backdrop-filter: blur(8px); 
+    backdrop-filter: blur(8px); 
+    box-shadow: 0px 0px 10px rgb(134, 134, 134, 0.5); /* 그림자 */
+    z-index: 999; /* 최상위 배치 */
+}
+
+header nav { height: 80px; }
+
+/* 네비게이션 메뉴 */
+header nav > ul {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 1.125rem;
+    gap: 50px; 
+    height: 100%; 
+}
+
+header nav > ul > li {
+    padding: 0 38px; 
+    font-weight: 600; 
+    position: relative;
+}
+
+header nav ul li a { display: block; height: 100%; }
+header nav ul li:hover a { color: #FF8335 } /* 호버 시 오렌지색 */
+header nav ul li:last-child { margin-right: 0; }
+
+/* ===========================================
+   모바일 햄버거 메뉴
+   =========================================== */
+.mbmenu {
+    width: 38px; 
+    height: 30px; 
+    position: relative; 
+    cursor: pointer; 
+    display: none; /* 기본적으로 숨김 */
+    top: 30px; 
+    left: 30px
+}
+
+/* 햄버거 메뉴 라인 */
+.mbmenu > span { 
+    border-radius: 5px; 
+    background-color: #1b1b1b; 
+    position: absolute; 
+    transition: 0.3s; 
+    width: 100%; 
+    height: 2px; 
+    left: -12px;
+}
+
+.mbmenu > span:nth-child(1) { top: 0 }
+.mbmenu > span:nth-child(2) { top: 10px }
+.mbmenu > span:nth-child(3) { top: 20px }
+
+/* 햄버거 메뉴 활성화 시 X자 모양으로 변환 */
+.mbmenu.active span:nth-child(1) { transform: rotate(45deg); top: 9px }
+.mbmenu.active span:nth-child(2) { opacity: 0; }
+.mbmenu.active span:nth-child(3) { transform: rotate(-45deg); top: 9px }
+
+/* ===========================================
+   메인 타이틀 섹션
+   =========================================== */
+.mainpg { width: 83.33%; height: 100vh; margin: 0 auto; }
+
+.main_text_area { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); /* 화면 중앙 배치 */
+    width: 100%;  
+}
+
+.main_title {
+    font-size: 5.625rem; 
+    font-weight: bold; 
+    text-align: center; 
+}
+
+.main_title > p span { color: #b0e0e6; } /* 하이라이트 색상 */
+
+.title_txt {
+    font-size: 1.375rem; 
+    text-align: center; 
+    padding-top: 50px; 
+    line-height: 40px; 
+}
+
+/* 아이콘 애니메이션 */
+@keyframes ani {
+    0% { transform: translateY(200px); } /* 아래에서 시작 */
+    100% { transform: translateY(0px); } /* 원래 위치로 */
+}
+
+.main_icon_area img {
+    width: 300px; 
+    animation: ani 1s 1 ease-in-out; /* 1초간 애니메이션 */
+}
+
+/* ===========================================
+   About Me 섹션
+   =========================================== */
+.aboutme {
+    width: 100%; 
+    background-color: #FAF7F5; /* 연한 베이지색 배경 */
+    border-radius: 100px; 
+    color: #1d1d1d;
+    border-bottom-right-radius: 0; 
+    border-bottom-left-radius: 0; 
+    opacity: 0; /* 초기 투명 상태 */
+    overflow: hidden;   
+    transform: translateY(100px); /* 아래에서 시작 */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* 부드러운 전환 */
+    padding: 100px 0; 
+}
+
+/* 스크롤 시 나타나는 효과 */
+.aboutme.on {
+    opacity: 1;  
+    transform: translateY(0);
+}
+
+.container { width: 100%; height: 100%; margin: 0 auto; }
+
+.title { padding-top: 40px; }
+.title > span {
+    font-size: 32px; 
+    font-weight: 700; 
+    display: block; 
+    color: #1b1b1b; 
+}
+
+.container > .title > span { color: #333; }
+.container > .title > p { font-size: 1.125rem; padding-top: -10px; }
+
+/* 프로필 컨테이너 */
+.profile_container {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 60px 0;
+}
+
+.profile_img {
+    width: 440px; 
+    height: 500px; 
+    box-shadow: 0px 2px 4px #999999; 
+    border-radius: 20px; 
+}
+
+.profile_img > img {
+    border-radius: 20px; 
+    object-fit: cover; 
+    width: 100%; 
+    height: 100%;
+}
+
+.profile > strong { font-size: 1.5rem; color: #b9b9b9; }
+
+.profile {  
+    margin-left: 100px; 
+    width: 50%; 
+    font-size: 1.25rem; 
+    color: #333
+}
+
+.profile > p { line-height: 30px; padding-top: 20px; }
+
+.profile ul li .sub li span { padding-left: 10px; }
+.profile ul li .sub li sup { font-size: 0.875rem; font-weight: 200; color: #6d6d6d; }
+
+/* 텍스트 아이콘 장식 */
+.text_icon {
+    position: absolute; 
+    right: 120px; 
+    top: 300px; 
+    width: 230px; 
+    transform: rotate(5deg); 
+}
+
+/* 버튼 스타일 */
+.button > a {
+    color: #1d1d1d; 
+    text-align: center; 
+    font-size: 1rem; 
+    display: block; 
+    line-height: 35px; 
+    width: 90px; 
+    height: 35px; 
+    border: 1px solid #FF8335; 
+    border-radius: 18px; 
+    background-color: #ffdcc6; 
+    color: #ff741e; 
+    margin-top: 30px;
+}
+
+.button > a:hover { 
+    background-color: #FF8335; 
+    color: #fff 
+}
+
+/* ===========================================
+   스킬 섹션
+   =========================================== */
+.skill {
+    width: 100%; 
+    padding: 100px 0; 
+    overflow: hidden;
+}
+
+.skill_box {
+    width: 100%;  
+    padding-top: 30px; 
+    display: flex; 
+    flex-flow: row; 
+    height: 100%; 
+    gap: 80px 
+}
+
+/* 스킬 리스트 (탭 메뉴) */
+.skill_list { width: 16%; background-color: #ffffff; }
+
+.skill_list > ul > li > a {
+    display: inline-block; 
+    padding: 22px 10px; 
+    border-radius: 30px 0 0 0; 
+    background-color: #FAF7F5; 
+    width: 100%; 
+    font-size: 1.25rem; 
+    text-align: center; 
+    font-weight: 500;
+}
+
+/* 각 탭의 테두리 반경 설정 */
+.skill_list > ul > li:nth-child(2) > a { border-radius: 0px; }
+.skill_list > ul > li:nth-child(3) > a { border-radius: 0px 0px 0px 0px; }
+.skill_list > ul > li:nth-child(4) > a { border-radius: 0px 0px 0px 0px; }
+.skill_list > ul > li:nth-child(5) > a { border-radius: 0px 0px 30px 0px; }
+
+/* 활성화된 탭 스타일 */
+.skill_list > ul > li a.active {
+    transition: all 0.5s; 
+    background-color: #FF8335; 
+    color: #fff; 
+}
+
+.skill_txtcon { width: 80%; }
+
+/* 스킬 탭 컨텐츠 */
+.skill_tab {
+    display: flex; 
+    gap: 40px; 
+    align-items: center; 
+    height: 100%; 
+    width: 100%; 
+}
+
+.skill_tab li {
+    width: 26%; 
+    box-shadow: 0px 0px 2px #8b8b8b; 
+    height: 345px; 
+    border-radius: 10px; 
+    position: relative; 
+    background-color: #fff; 
+}
+
+.skill_txt {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    text-align: center; 
+    width: 100%;
+}
+
+.skill_txt strong { font-size: 1.5rem; display: block; }
+
+.skill_txt .skill_img {
+    width: 80px;  
+    margin: 20px auto; 
+    height: 80px;
+}
+
+.skill_txt .skill_img img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+}
+
+.skill_txt span {
+    display: block; 
+    line-height: 25px; 
+    color: #303030; 
+    font-size: 1.125rem;
+} 
+
+/* ===========================================
+   코딩 프로젝트 섹션
+   =========================================== */
+
+/* 버튼 영역 */
+.button_area { display: flex; gap: 10px }
+
+/* Go 버튼 스타일 */
+.go_btn2 {
+    display: inline-block;
+    border-radius: 15px;
+    background-color: #ffdcc6;
+    font-size: 1rem;
+    padding: 5px 15px;
+    color: #ff741e;
+    margin-top: 15px;
+    text-align: center;
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+/* 화살표 아이콘 */
+.go_btn2 span {
+    background: url(../images/arrow_sprites.png); 
+    width: 25px; 
+    height: 25px; 
+    background-position: 25px, 0; 
+    background-size: 200% 100%; 
+    text-indent: -99999px; 
+    position: absolute;  
+    right: 2px; 
+    top: 3px
+}
+
+.go_btn2:hover { background-color: #ff741e; color: #ffffff }
+.go_btn2:hover span { background-position: 0, 0; }
+
+.coding { background-color: #ffffff; }
+
+.coding > .title { display: flex; justify-content: space-between; }
+.coding > .title > a { font-size: 1rem; align-self: flex-end; }
+
+.coding ul { margin-top: 30px; }
+.coding ul li:first-child { border-top: 1px solid #eb1717; }
+.coding ul li { 
+    width: 100%; 
+    border-bottom: 1px solid #1f6922; 
+    padding: 30px 0; 
+}  
+
+.coding ul li {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+}
+
+/* 이미지 호버 효과 */
+.coding ul li .coding_img > img {
+    transition: all 0.5s; 
+    display: block; 
+    object-fit: cover; 
+}
+
+.coding ul li:hover .coding_img > img { transform: scale(1.1); } /* 호버 시 확대 */
+
+/* 프로젝트 텍스트 정보 */
+.coding ul li .coding_text {
+    width: 460px; 
+    height: 160px; 
+    margin-left: 20px; 
+    color: #333 
+}
+
+.coding ul li .coding_text strong {
+    font-size: 2rem; 
+    display: block; 
+    font-weight: 700;
+}
+
+.coding ul li .coding_text > span {
+    font-size: 1.25rem; 
+    padding-top: 12px;  
+    font-weight: 400; 
+    display: block;
+}
+
+.coding ul li .coding_text p { padding-top: 10px; color: #303030 }
+.coding ul li .coding_text p span { font-size: 16px; color: #5f5f5f }
+.coding ul li .coding_text p span:nth-child(2) { padding-left: 5px; }
+.coding ul li .coding_text p span:nth-child(3) { display: block; padding-top: 10px; }
+
+/* Go 버튼 스타일 */
+.go_btn {
+    display: inline-block;
+    border-radius: 15px;
+    background-color: #ffdcc6;
+    font-size: 1rem;
+    padding: 5px 15px;
+    color: #ff741e;
+    margin-top: 15px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.go_btn span {
+    background: url(../images/arrow_sprites.png); 
+    width: 25px; 
+    height: 25px; 
+    background-position: 25px, 0; 
+    background-size: 200% 100%; 
+    text-indent: -99999px; 
+    position: absolute;  
+    right: 5px; 
+    top: 3px
+}
+
+.go_btn:hover { background-color: #ff741e; color: #ffffff }
+.go_btn:hover span { background-position: 0, 0; }
+ 
+/* ===========================================
+   디자인 섹션
+   =========================================== */
+.design { padding-bottom: 100px; }
+
+.design ul {
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 50px; 
+}
+
+.design ul li {
+    width: 32%; 
+    height: 530px; 
+    background-color: #FAF7F5; 
+    border-radius: 20px; 
+    position: relative; 
+    overflow: hidden;
+}
+
+.design ul li > strong {
+    font-size: 30px; 
+    font-weight: 700; 
+    margin: 40px 0 0px 40px; 
+    display: block; 
+    color: #333;
+}
+
+.design ul li > .button_go2 {
+    width: 50px; 
+    height: 50px; 
+    display: block; 
+    border-radius: 100%; 
+    text-indent: -99999px; 
+    position: absolute; 
+    top: 26px; 
+    right: 20px; 
+    background: url(../images/arrow3.png); 
+}
+
+.design_img { width: 280px; margin: 0 auto; }
+.design_img img { width: 100%; margin-top: 10px; }
+
+/* 디자인 카드 호버 효과 */
+.design ul li:hover {
+    background-color: #ff9554; 
+    transition: all 0.5s; 
+    width: 35% /* 호버 시 확대 */
+}
+
+.design ul li:hover .button_go2 { background: url(../images/arrow4.png); }
+.design ul li:hover > strong { color: #fff }
+
+/* ===========================================
+   푸터
+   =========================================== */
+footer {
+    background: #222; 
+    color: white; 
+    padding: 3rem 0 1rem; 
+    margin-top: 4rem;
+}
+
+footer .ftinner { margin: 0 auto; width: 83.33%; }
+
+footer .ftinner strong {
+    font-size: 32px; 
+    padding-top: 50px; 
+    display: block; 
+    font-family: "Montserrat", sans-serif;
+}
+
+footer .ftinner hr { 
+    padding: 5px; 
+    border-bottom: 1px solid rgba(94, 94, 94, 0.4);
+} 
+
+footer .ftinner > p {
+    font-size: 1.5rem; 
+    padding-top: 20px; 
+    color: #575757;
+}
+
+footer .ftinner .contact_list { padding-top: 26px; }
+footer .ftinner .contact_list ul { display: flex; gap: 30px }
+footer .ftinner .contact_list ul li a { padding: 10px; font-size: 24px; }
+footer .ftinner .contact_list ul li a span {
+    display: block; 
+    font-size: 28px;  
+    padding-top: 8px; 
+    font-weight: 500;
+}
+
+/* ===========================================
+   상단 이동 버튼
+   =========================================== */
+.top_btn > a {
+    width: 50px; 
+    height: 50px; 
+    right: 50px;
+    bottom: 70px; 
+    z-index: 999; 
+    border-radius: 100%;
+    position: fixed; 
+    opacity: 0.8; 
+    box-shadow: 0px 0px 4px #6d6d6d; 
+    display: none; /* 기본적으로 숨김 */
+}
+
+/* ===========================================
+   모바일 서브 네비게이션
+   =========================================== */
+.open_nav {
+    background-color: #fff; 
+    position: fixed; 
+    top: 0; 
+    left: -100%; /* 화면 밖에 숨김 */
+    width: 100%; 
+    height: 100%; 
+    z-index: 9; 
+    transition: left 0.5s ease-in-out; 
+    visibility: hidden;  
+}
+
+.open_nav.active { left: 0% } /* 활성화 시 화면에 표시 */
+
+.subnav_menu {
+    font-size: 2rem; 
+    font-weight: 700; 
+    display: flex; 
+    flex-flow: column; 
+    flex-grow: 1; 
+    top: 30%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    position: absolute; 
+    text-align: center; 
+    padding-top: 120px;
+}
+
+.subnav_menu li { line-height: 80px; }
+.subnav_menu li:hover { color: #FF8335; }
+
+/* ===========================================
+   데스크톱 중간 사이즈 (1300px 이하)
+   =========================================== */
+@media screen and (max-width:1300px) {
+    .main_text_area { top: 50%; }
+    .main_icon_area img { width: 230px; }
+    .main_title { font-size: 3rem; }
+    .profile p { font-size: 1rem; }
+    .title_txt { font-size: 1rem; }
+
+    /* 스킬 섹션 조정 */
+    .skill_tab { gap: 30px }
+    .skill_tab li { width: 30% }
+    .skill_txt span { font-size: 1rem; }
+    
+    /* 코딩 섹션 조정 */
+    .coding ul li .coding_text { width: 60% }
+    .coding ul li .coding_text > strong { font-size: 2rem; }
+    .coding ul li .coding_text > p { font-size: 1.2rem; }
+    .coding ul li .coding_text > span { font-size: 1rem; padding-top: 5px; }
+
+    /* 디자인 섹션 조정 */
+    .design { padding-bottom: 50px; }
+    .design ul li { height: 350px; width: 31%; }
+    .design_img { width: 160px }
+    .design ul li > strong { font-size: 1.5rem; }
+    footer .ftinner > p { font-size: 1rem; }
+    .design ul li > .button_go2 {
+        width: 30px; 
+        height: 30px; 
+        display: block; 
+        border-radius: 100%; 
+        text-indent: -99999px; 
+        position: absolute; 
+        top: 26px; 
+        right: 20px; 
+        background: url(../images/arrow3.png); 
+        background-size: cover;
+    }
+    .design ul li:hover .button_go2 {
+        background: url(../images/arrow4.png); 
+        background-size: cover;
+    }
+}
+
+/* ===========================================
+   모바일 (768px 이하)
+   =========================================== */
+@media screen and (max-width:768px) {
+    .container { width: 90%; }
+    .inner { width: 90%; }
+    
+    /* 헤더/메뉴 */
+    header { display: none; } /* 데스크톱 헤더 숨김 */
+    nav { display: none; }
+    .mbmenu { display: block; z-index: 9999; } /* 모바일 메뉴 표시 */
+
+    /* 메인 타이틀 */
+    @keyframes ani {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .main_text_area { padding: 80px 0; top: 50% }
+    .main_icon_area img { width: 230px; }
+    .main_title { font-size: 2rem; }
+    .title_txt {
+        font-size: 1rem; 
+        text-align: center; 
+        width: 90%; 
+        margin: 0 auto; 
+        line-height: 30px;
+    }
+
+    /* About Me 섹션 */
+    .aboutme { border-radius: 10px; padding: 30px 0; }
+    .text_icon { display: none; } /* 장식 텍스트 숨김 */
+    .profile_container {
+        flex-direction: column; /* 세로 배치 */
+        padding-bottom: 20px; 
+    }
+    .profile > ul {
+        flex-direction: column; 
+        flex-wrap: wrap;  
+        gap: 15px; 
+        padding-top: 30px; 
+        font-size: 1.2em;
+    }
+    .profile { margin-left: 0; }
+    .sub > li { font-size: 0.9rem; }
+    .profile_img { width: 400px; }
+    .profile { width: 90%; padding-top: 30px; }
+    .profile > p {
+        font-size: 1rem; 
+        line-height: 30px; 
+        padding-top: 10px; 
+    }
+    
+    /* 스킬 섹션 모바일 버전 */
+    .skill { padding: 30px 0; }
+    .skill_list { width: 100%; background-color: #ffffff; }
+    .skill_box {
+        width: 100%;  
+        padding-top: 30px; 
+        display: flex; 
+        flex-flow: column; /* 세로 배치 */
+        height: 100%; 
+        gap: 0px 
+    }
+    .skill_list > ul {
+        display: flex; 
+        width: 100%; 
+        gap: 0px
+    }
+    .skill_list > ul > li { width: 33%; }
+    .skill_list > ul > li > a {
+        display: block; 
+        padding: 20px 5px; 
+        border-radius: 20px 0 0 0; 
+        background-color: #FAF7F5;  
+        font-size: 1rem; 
+        text-align: center; 
+        font-weight: 500;
+    }
+    .skill_list > ul > li:nth-child(3) > a { border-radius: 0px 20px 0px 0; }
+
+    .skill_txtcon {
+        width: 100%; 
+        background-color: #FAF7F5;  
+        position: relative; 
+        overflow: hidden;  
+    }
+    .skill_tab {
+        display: flex;  
+        width: 100%; 
+        height: 100%;  
+        flex-wrap: wrap; 
+        padding-left: 0px; 
+        gap: 20px 20px; 
+        margin: 30px auto; 
+        padding-left: 18px; 
+    }
+    .skill_tab li {
+        width: 45%; 
+        box-shadow: 0px 0px 2px #8b8b8b; 
+        height: 200px; 
+        border-radius: 10px; 
+        background-color: #fff;
+    }
+    .skill_txt {
+        position: absolute;  
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        text-align: center; 
+        width: 100%;
+    }
+    .skill_txt strong { font-size: 1.125rem; display: block; }
+    .skill_txt span { font-size: 0.875rem; line-height: 20px; }
+    .skill_txt .skill_img {
+        width: 80px;  
+        margin: 8px auto; 
+        height: 80px;
+    }
+
+    /* Swiper 슬라이더 (강점 섹션) */
+    .strength { padding: 0; }
+    .swiper-slide {
+        width: 60%; 
+        height: 300px;
+        border-radius: 20px; 
+        position: relative;
+        box-shadow: 0px 0px 4px #a1a1a1;  
+    }
+    
+    .icon_area { padding-top: 70px; }
+    .icon_area img {
+        width: 90px; 
+        margin-left: 30px; 
+    }
+    .icon_area span {
+        font-size: 1.4rem; 
+        font-weight: 600; 
+        padding-top: 30px;
+    }
+    
+    /* 추가 콘텐츠 (호버 시 표시) */
+    .extra_content {
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%;  
+        display: none; /* 기본적으로 숨김 */
+    }
+    .extra_content .extra_text strong { font-size: 1.5rem; }
+    .extra_content .extra_text span {
+        font-size: 1rem;  
+        display: block; 
+        margin-top: 20px; 
+        line-height: 26px
+    }
+
+    /* 코딩 섹션 모바일 버전 */
+    .coding ul li {
+        display: flex; 
+        align-items: center; 
+        flex-direction: column-reverse; /* 이미지를 아래, 텍스트를 위로 */
+        justify-content: center; 
+        gap: 10px; 
+        margin: 15px 0;
+    }
+    
+    .coding ul li .coding_text {
+        width: 100%; 
+        margin-left: 30px; 
+        padding: 10px 0;
+    }
+    .coding ul li .coding_text strong { font-size: 1.5rem; }
+    .coding ul li .coding_text > span { font-size: 1rem; padding-top: 5px; }
+    .coding ul li .coding_text p { padding-top: 3px; }
+    .coding ul li .coding_text p span { color: #303030; font-size: 0.875rem; }
+    .coding ul li .coding_text p span:nth-child(3) {
+        display: block; 
+        padding-top: 5px;
+    }
+    
+    /* 모바일 버튼 스타일 */
+    .go_btn {
+        width: 75px; 
+        height: 30px; 
+        display: block;  
+        font-size: 1rem; 
+        line-height: 30px; 
+        margin-top: 10px; 
+        position: relative; 
+        padding-left: 10px; 
+    } 
+    .go_btn2 {
+        width: 90px; 
+        height: 30px; 
+        display: block;  
+        font-size: 1rem; 
+        line-height: 30px; 
+        margin-top: 10px; 
+        position: relative; 
+        padding-left: 10px; 
+    } 
+    .go_btn span {
+        background: url(../images/arrow_sprites.png); 
+        width: 25px; 
+        height: 25px; 
+        background-position: 25px, 0; 
+        background-size: 200% 100%; 
+        text-indent: -99999px; 
+        position: absolute;  
+        right: 2px; 
+        top: 4px
+    }
+    .go_btn:hover { background-color: #ff741e; color: #ffffff }
+    
+    /* 디자인 섹션 모바일 버전 */
+    .design { padding-bottom: 30px; }
+    .design ul {
+        display: flex; 
+        justify-content: space-between; 
+        margin-top: 0px; 
+        flex-wrap: wrap; /* 줄바꿈 허용 */
+        padding-top: 30px;
+    }
+    .design ul li {
+        width: 100%; /* 전체 너비 사용 */
+        height: 255px; 
+        background-color: #FAF7F5; 
+        border-radius: 20px; 
+        position: relative; 
+        overflow: hidden; 
+        margin: 5px; 
+    }
+    .design ul li > strong {
+        font-size: 1.5rem; 
+        font-weight: 700; 
+        margin: 0; 
+        display: block; 
+        color: #333; 
+        text-align: center; 
+        margin-top: 20px;
+    }
+
+    .design_img { width: 150px; margin: 0 auto; }
+    .design ul li:hover {
+        background-color: #FF8335; 
+        transition: all 1s; 
+        width: 100%; /* 호버 시에도 전체 너비 유지 */
+    } 
+
+   /* 푸터 모바일 버전 */
+   footer .ftinner { padding: 50px 0; }
+   footer .ftinner > p { font-size: 0.875rem; }
+   footer .ftinner strong { padding-top: 20px; display: block; }
+   footer .ftinner .contact_list ul {
+       flex-direction: column; /* 세로 배치 */
+       gap: 0
+   }
+   footer .ftinner .contact_list ul li a { padding: 10px; font-size: 1.25rem; }
+   footer .ftinner .contact_list ul li a span {
+       display: block; 
+       font-size: 1.5rem;  
+       padding-top: 8px; 
+       font-weight: 500;
+   }
+
+   /* 모바일 네비게이션 */
+   .open_nav {
+       width: 100%;
+       visibility: visible; /* 모바일에서는 항상 보이도록 설정 */
+   }
+}
